@@ -2,40 +2,31 @@
 #include <math.h>
 #include <string.h>
 
+void opreration_calculator();
+void power_under();
+void trigonometry();
+void area();
+void temperature();
+
 int main()
 {
     // all cal. y or n
-    int fc;
-
-    // oper. cal.
-    int a[100], sum = 0, i = 0, n = 0;
-    char s, m;
-    int min = 0;
-
-    // power
-    int p;
-    float base, exponent;
-
-    // multiplication
-    int mul = 1;
-
-    // tri
-    int t;
-    double degree;
-    double val;
-
+    int fc;    
+    int att=0;
+    system("clear");
     while (1)
     {
         printf("\n");
         printf(" =============================================================================================================\n");
         printf("]|                                              \033[35mCalculator\033[0m                                                   |[\n");
         printf("]|                                                                                                           |[\n");
-        printf("]|                             \033[36mWhat do you want to use Enter a number only\033[0m                                   |[\n");
+        printf("]|                             \033[1m\033[36mWhat do you want to use Enter a number only\033[0m\033[0m                                   |[\n");
         printf("]|                                                                                                           |[\n");
-        printf("]|   1. Operation Calculator(+,-,*,/).                       5. Temperature                                  |[\n");
-        printf("]|   2. Power & Under Root.                                  6. Length                                       |[\n");
-        printf("]|   3. Trigonometry.                                        7. Weight                                       |[\n");
-        printf("]|   4. Area                                                 8. Currency                                     |[\n");
+        printf("]|   1. \033[33mOperation Calculator(+,-,*,/).\033[0m                       6. \033[33mTemperature\033[0m                                  |[\n");
+        printf("]|   2. \033[33mPower & Under Root.\033[0m                                  7. Length                                       |[\n");
+        printf("]|   3. \033[33mTrigonometry.\033[0m                                        8. Weight                                       |[\n");
+        printf("]|   4. \033[33mArea\033[0m                                                                                                 |[\n");
+        printf("]|   5. \033[33mLogarithm\033[0m                                                                                            |[\n");
         printf("]|                                                                                                           |[\n");
         printf("]|                                               \033[31m0. Exit\033[0m                                                     |[\n");
         printf("]|                                                                                                           |[\n");
@@ -47,25 +38,71 @@ int main()
         if (fc == 0)
         {
             printf("\033[36mThank you for using\nGood Bye\033[0m\n");
-            printf("\033[33m");
-
-            printf("     *****\n");
-            printf("   *       * \n");
-            printf(" *           *\n");
-            printf("*    O   O    *\n");
-            printf("*      ^      *\n");
-            printf(" *   \\___/   * \n");
-            printf("   *       *  \n");
-            printf("     ***** \n");
-            printf("\033[0m");
+           
             break;
         }
 
         switch (fc)
         {
         case 1:
+            operation_calculator();
+            break;
+
+        case 2:
+            power_under();            
+            break;
+
+        case 3:
+            trigonometry();
+            break;
+
+        case 4:
+            area();
+            break;
+
+        case 6:
+             temperature();
+            break;
+
+        default:
+        system("clear");
+            printf("\n\033[32mUpdate coming soon\033[0m");
+            break;
+        }
+    }
+
+    return 0;
+}
+/*
+                    printf("\033[COLOR_CODEm Your text here \033[0m");
+                    step 1: \033[ starts the escape sequence.
+                    step 2: COLOR_CODEm is replaced with the color code you want.
+                    step 3: \033[0m resets the color back to default.
+
+                    Black: 30
+                    Red: 31
+                    Green: 32
+                    Yellow: 33
+                    Blue: 34
+                    Magenta: 35
+                    Cyan: 36
+                    White: 37
+                    */
+void operation_calculator(){
+
+        // all cal. y or n
+    int fc;
+
+    // oper. cal.
+    int a[100], sum = 0, i = 0, n = 0;
+    char s, m;
+    int min = 0;
+    int mul = 1; // Initialize mul variable
+
+                system("clear");
             while (1)
             {
+                
                 printf("\nEnter a operation sign(+,-,*,/): ");
                 scanf(" %c", &s);
                 m = 'y';
@@ -122,6 +159,7 @@ int main()
                     // multiplication
 
                     n = 0;
+                    mul = 1; // Reset mul to 1 for each multiplication operation
                     printf("\nEnter the number for multiplication(enter 0 for stop): \n");
                     for (i = 0;; i++)
                     {
@@ -185,10 +223,17 @@ int main()
                             div = a[0];
                             for (i = 1; i < n; i++)
                             {
+                                if (a[i] == 0) {
+                                    printf("\nError! Division by zero is not allowed.");
+                                    div = 0; // Reset div to 0 to indicate error
+                                    break;
+                                }
                                 div = div / a[i];
                             }
 
-                            printf("\nDivision of numbers is %3.2f", div);
+                            if (div != 0) {
+                                printf("\nDivision of numbers is %3.2f", div);
+                            }
                             printf("\n\nDo you want to use division again?(y/n): ");
                             scanf(" %c", &m);
                         }
@@ -199,21 +244,7 @@ int main()
                     printf("\033[31mInvaild Operation Sign\033[0m");
                     printf("\n\033[32mTry Again\033[0m");
                     break;
-                    /*
-                    printf("\033[COLOR_CODEm Your text here \033[0m");
-                    step 1: \033[ starts the escape sequence.
-                    step 2: COLOR_CODEm is replaced with the color code you want.
-                    step 3: \033[0m resets the color back to default.
-
-                    Black: 30
-                    Red: 31
-                    Green: 32
-                    Yellow: 33
-                    Blue: 34
-                    Magenta: 35
-                    Cyan: 36
-                    White: 37
-                    */
+                    
                 }
                 printf("\n\nDo you want to use 'Operation Calculator' again? (y/n): ");
                 scanf(" %c", &m);
@@ -221,10 +252,16 @@ int main()
                     break;
             }
             printf("\n");
+            system("clear");
             printf("\033[33mTHANK YOU FOR USING OPERATION CALCULATOR \033[0m");
-            break;
 
-        case 2:
+}
+void power_under(){
+    // power
+    int p;
+    float base, exponent;
+
+    system("clear");
             while (1)
             {
 
@@ -268,9 +305,15 @@ int main()
                     break;
                 }
             }
-            break;
+            system("clear");
 
-        case 3:
+}
+void trigonometry(){
+     // tri
+    int t;
+    double degree;
+    double val;
+     system("clear");
             while (1)
             {
                 printf("\n\033[36mFind value of angle:             Find angle of value( Inverse ):\033[0m  \n");
@@ -441,9 +484,10 @@ int main()
                     break;
                 }
             }
-            break;
-
-        case 4:
+            system("clear");
+}
+void area(){
+    system("clear");
             while (1)
             {
                 printf("\n\033[36mArea Calculation Options:\033[0m\n");
@@ -514,9 +558,10 @@ int main()
                     break;
                 }
             }
-            break;
-
-        case 5:
+            system("clear");
+}
+void temperature(){
+system("clear");
             while (1)
             {
                 printf("\n\033[36mTemperature Conversion Options:\033[0m\n");
@@ -580,13 +625,10 @@ int main()
                     break;
                 }
             }
-            break;
-
-        default:
-            printf("\n\033[32mUpdate coming soon\033[0m");
-            break;
-        }
-    }
-
-    return 0;
+            system("clear");
 }
+
+
+
+
+
