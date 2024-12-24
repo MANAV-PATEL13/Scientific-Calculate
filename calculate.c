@@ -6,6 +6,7 @@ void opreration_calculator();
 void power_under();
 void trigonometry();
 void area();
+void logarithm();
 void temperature();
 
 int main()
@@ -58,6 +59,10 @@ int main()
 
         case 4:
             area();
+            break;
+
+        case 5:
+            logarithm();
             break;
 
         case 6:
@@ -480,7 +485,7 @@ void trigonometry(){
                     break;
 
                 default:
-                    printf("\033[32mUpdate Coming Soon\033[0m\n");
+                    printf("\033[31mInvaild\033[0m\n");
                     break;
                 }
             }
@@ -554,7 +559,7 @@ void area(){
                     printf("Volume of Sphere: %.2f\n", result);
                     break;
                 default:
-                    printf("\033[31mInvalid Choice!\033[0m\nTry again.\n");
+                    printf("\033[31mInvalid Choice!\033[0m\n\n");
                     break;
                 }
             }
@@ -627,8 +632,112 @@ system("clear");
             }
             system("clear");
 }
+void logarithm(){
+    system("clear");
+    int featureChoice;
 
+    while (1) {
+        printf("\n\033[36mChoose a function:\033[0m\n");
+        printf("1. Natural Logarithm (ln)\n");
+        printf("2. Logarithm Base 10 (log10)\n");
+        printf("3. Logarithm Base e (log_e)\n");
+        printf("4. Logarithm with Custom Base\n");
+        printf("5. Antilogarithm Base e (e^x)\n");
+        printf("6. Antilogarithm Base 10 (10^x)\n");
+        printf("7. Antilogarithm with Custom Base (base^x)\n");
+        printf("\033[31m0. Exit\033[0m\n");
+        printf("\n\nEnter your choice : ");
+        scanf("%d", &featureChoice);
 
+        if (featureChoice == 0) {
+            system("clear");
+            printf("Exiting logarithm menu.\n");
+            break;
+        }
+
+       
+        double number, base, result;
+
+        switch (featureChoice) {
+            case 1: // Natural Logarithm
+                printf("Enter the number: ");
+                scanf("%lf", &number);
+                if (number <= 0) {
+                    printf("Error: Logarithm undefined for non-positive numbers.\n");
+                } else {
+                    result = log(number);
+                    printf("ln(%lf) = %lf\n", number, result);
+                }
+                break;
+
+            case 2: // Logarithm Base 10
+                printf("Enter the number: ");
+                scanf("%lf", &number);
+                if (number <= 0) {
+                    printf("Error: Logarithm undefined for non-positive numbers.\n");
+                } else {
+                    result = log10(number);
+                    printf("log10(%lf) = %lf\n", number, result);
+                }
+                break;
+
+            case 3: // Logarithm Base e
+                printf("Enter the number: ");
+                scanf("%lf", &number);
+                if (number <= 0) {
+                    printf("Error: Logarithm undefined for non-positive numbers.\n");
+                } else {
+                    result = log(number);
+                    printf("log_e(%lf) = %lf\n", number, result);
+                }
+                break;
+
+            case 4: // Custom Base Logarithm
+                printf("Enter the number: ");
+                scanf("%lf", &number);
+                printf("Enter the base: ");
+                scanf("%lf", &base);
+                if (number <= 0 || base <= 0 || base == 1) {
+                    printf("Error: Logarithm undefined for non-positive numbers or base 1.\n");
+                } else {
+                    result = log(number) / log(base);
+                    printf("log base %lf of %lf = %lf\n", base, number, result);
+                }
+                break;
+
+            case 5: // Antilogarithm Base e
+                printf("Enter the exponent: ");
+                scanf("%lf", &number);
+                result = exp(number);
+                printf("e^%lf = %lf\n", number, result);
+                break;
+
+            case 6: // Antilogarithm Base 10
+                printf("Enter the exponent: ");
+                scanf("%lf", &number);
+                result = pow(10, number);
+                printf("10^%lf = %lf\n", number, result);
+                break;
+
+            case 7: // Antilogarithm with Custom Base
+                printf("Enter the base: ");
+                scanf("%lf", &base);
+                printf("Enter the exponent: ");
+                scanf("%lf", &number);
+                if (base <= 0 || base == 1) {
+                    printf("Error: Antilogarithm undefined for base 1 or non-positive base.\n");
+                } else {
+                    result = pow(base, number);
+                    printf("%lf^%lf = %lf\n", base, number, result);
+                }
+                break;
+
+            default:
+                printf("\033[31mInvalid choice.\033[0m\n");
+                break;
+        }
+    }
+}
 
 
 
