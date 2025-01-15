@@ -2,13 +2,14 @@
 #include <math.h>
 #include <string.h>
 
-void opreration_calculator();
+void operation_calculator();
 void power_under();
 void trigonometry();
 void area();
 void logarithm();
 void temperature();
 void length();
+void weight();
 
 int main()
 {
@@ -26,7 +27,7 @@ int main()
         printf("]|                                                                                                           |[\n");
         printf("]|   1. \033[33mOperation Calculator(+,-,*,/).\033[0m                       6. \033[33mTemperature\033[0m                                  |[\n");
         printf("]|   2. \033[33mPower & Under Root.\033[0m                                  7. \033[33mLength\033[0m                                       |[\n");
-        printf("]|   3. \033[33mTrigonometry.\033[0m                                        8. Weight                                       |[\n");
+        printf("]|   3. \033[33mTrigonometry.\033[0m                                        8. \033[33mWeight\033[0m                                       |[\n");
         printf("]|   4. \033[33mArea\033[0m                                                                                                 |[\n");
         printf("]|   5. \033[33mLogarithm\033[0m                                                                                            |[\n");
         printf("]|                                                                                                           |[\n");
@@ -72,6 +73,10 @@ int main()
 
         case 7:
             length();
+            break;
+
+        case 8:
+            weight();
             break;
 
         default:
@@ -835,5 +840,119 @@ void length(){
         }
     }
 }
+void weight() {
+    system("clear");
+    while(1) {
 
+        printf("\n\033[36mWeight Conversion Options:\033[0m\n");
+        printf("1. Convert kilograms to pounds\n");
+        printf("2. Convert pounds to kilograms\n");
+        printf("3. Convert grams to ounces\n");
+        printf("4. Convert ounces to grams\n");
+        printf("5. Convert tons to kilograms\n");
+        printf("6. Convert kilograms to tons\n");
+        printf("7. Convert kilograms to grams\n");
+        printf("8. Convert grams to kilograms\n");
+        printf("9. Convert pounds to ounces\n");
+        printf("10. Convert ounces to pounds\n");
+        printf("\033[31m0. Exit\033[0m\n");
+        printf("\nEnter your choice: ");        
+        int weight_choice;
+        scanf("%d",&weight_choice);
+
+        if (weight_choice == 0){
+             break;
+        }
+
+       
+        double weight;
+        switch (weight_choice) {
+            case 1:
+                printf("Enter weight in kilograms: ");
+                if (scanf("%lf", &weight) != 1) {
+                    printf("\033[31mInvalid input. Please enter a valid number.\n\033[0m");
+                    return;
+                }
+                printf("%.2lf kilograms = %.2lf pounds\n", weight, weight * 2.20462);
+                break;
+            case 2:
+                printf("Enter weight in pounds: ");
+                if (scanf("%lf", &weight) != 1) {
+                    printf("\033[31mInvalid input. Please enter a valid number.\n\033[0m");
+                    return;
+                }
+                printf("%.2lf pounds = %.2lf kilograms\n", weight, weight / 2.20462);
+                break;
+            case 3:
+                printf("Enter weight in grams: ");
+                if (scanf("%lf", &weight) != 1) {
+                    printf("\033[31mInvalid input. Please enter a valid number.\n\033[0m");
+                    return;
+                }
+                printf("%.2lf grams = %.2lf ounces\n", weight, weight * 0.035274);
+                break;
+            case 4:
+                printf("Enter weight in ounces: ");
+                if (scanf("%lf", &weight) != 1) {
+                    printf("\033[31mInvalid input. Please enter a valid number.\n\033[0m");
+                    return;
+                }
+                printf("%.2lf ounces = %.2lf grams\n", weight, weight / 0.035274);
+                break;
+            case 5:
+                printf("Enter weight in tons: ");
+                if (scanf("%lf", &weight) != 1) {
+                    printf("\033[31mInvalid input. Please enter a valid number.\n\033[0m");
+                    return;
+                }
+                printf("%.2lf tons = %.2lf kilograms\n", weight, weight * 1000);
+                break;
+            case 6:
+                printf("Enter weight in kilograms: ");
+                if (scanf("%lf", &weight) != 1) {
+                    printf("\033[31mInvalid input. Please enter a valid number.\n\033[0m");
+                    return;
+                }
+                printf("%.2lf kilograms = %.2lf tons\n", weight, weight / 1000);
+                break;
+            case 7:
+                printf("Enter weight in kilograms: ");
+                if (scanf("%lf", &weight) != 1) {
+                    printf("\033[31mInvalid input. Please enter a valid number.\n\033[0m");
+                    return;
+                }
+                printf("%.2lf kilograms = %.2lf grams\n", weight, weight * 1000);
+                break;
+            case 8:
+                printf("Enter weight in grams: ");
+                if (scanf("%lf", &weight) != 1) {
+                    printf("\033[31mInvalid input. Please enter a valid number.\n\033[0m");
+                    return;
+                }
+                printf("%.2lf grams = %.2lf kilograms\n", weight, weight / 1000);
+                break;
+            case 9:
+                printf("Enter weight in pounds: ");
+                if (scanf("%lf", &weight) != 1) {
+                    printf("\033[31mInvalid input. Please enter a valid number.\n\033[0m");
+                    return;
+                }
+                printf("%.2lf pounds = %.2lf ounces\n", weight, weight * 16);
+                break;
+            case 10:
+                printf("Enter weight in ounces: ");
+                if (scanf("%lf", &weight) != 1) {
+                    printf("\033[31mInvalid input. Please enter a valid number.\n\033[0m");
+                    return;
+                }
+                printf("%.2lf ounces = %.2lf pounds\n", weight, weight / 16);
+                break;
+            default:
+                printf("\033[31mInvalid choice. Please try again.\n\033[0m");
+                break;
+        }
+    }
+    system("clear");
+    printf("\033[31mExiting Weight\033[0m");
+}
 
