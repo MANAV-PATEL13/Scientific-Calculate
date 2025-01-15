@@ -8,6 +8,7 @@ void trigonometry();
 void area();
 void logarithm();
 void temperature();
+void length();
 
 int main()
 {
@@ -24,7 +25,7 @@ int main()
         printf("]|                             \033[1m\033[36mWhat do you want to use Enter a number only\033[0m\033[0m                                   |[\n");
         printf("]|                                                                                                           |[\n");
         printf("]|   1. \033[33mOperation Calculator(+,-,*,/).\033[0m                       6. \033[33mTemperature\033[0m                                  |[\n");
-        printf("]|   2. \033[33mPower & Under Root.\033[0m                                  7. Length                                       |[\n");
+        printf("]|   2. \033[33mPower & Under Root.\033[0m                                  7. \033[33mLength\033[0m                                       |[\n");
         printf("]|   3. \033[33mTrigonometry.\033[0m                                        8. Weight                                       |[\n");
         printf("]|   4. \033[33mArea\033[0m                                                                                                 |[\n");
         printf("]|   5. \033[33mLogarithm\033[0m                                                                                            |[\n");
@@ -67,6 +68,10 @@ int main()
 
         case 6:
              temperature();
+            break;
+
+        case 7:
+            length();
             break;
 
         default:
@@ -258,7 +263,7 @@ void operation_calculator(){
             }
             printf("\n");
             system("clear");
-            printf("\033[33mTHANK YOU FOR USING OPERATION CALCULATOR \033[0m");
+            printf("\033[31mExiting Operation Calculator\033[0m");
 
 }
 void power_under(){
@@ -310,8 +315,9 @@ void power_under(){
                     break;
                 }
             }
-            system("clear");
-
+            
+    system("clear");
+            printf("\033[31mExiting Power & Root\033[0m");
 }
 void trigonometry(){
      // tri
@@ -490,6 +496,7 @@ void trigonometry(){
                 }
             }
             system("clear");
+            printf("\033[31mExiting Trigonometry\033[0m");
 }
 void area(){
     system("clear");
@@ -564,6 +571,7 @@ void area(){
                 }
             }
             system("clear");
+            printf("\033[31mExiting Area\033[0m");
 }
 void temperature(){
 system("clear");
@@ -631,6 +639,7 @@ system("clear");
                 }
             }
             system("clear");
+             printf("\033[31mExiting Temperature\033[0m");
 }
 void logarithm(){
     system("clear");
@@ -651,7 +660,7 @@ void logarithm(){
 
         if (featureChoice == 0) {
             system("clear");
-            printf("Exiting logarithm menu.\n");
+            printf("\033[31mExiting logarithm menu.\033[0m\n");
             break;
         }
 
@@ -738,6 +747,93 @@ void logarithm(){
         }
     }
 }
+void length(){
+    system("clear");
+    int choice;
+    double meters, kilometers, miles, feet, inches, centimeters;
 
+    while (1) {
+        printf("\033[36m\nLength Conversion Menu:\033[0m\n");
+        printf("1. Meters to Kilometers\n");
+        printf("2. Kilometers to Meters\n");
+        printf("3. Meters to Miles\n");
+        printf("4. Miles to Meters\n");
+        printf("5. Feet to Inches\n");
+        printf("6. Inches to Feet\n");
+        printf("7. Centimeters to Meters\n");
+        printf("8. Meters to Centimeters\n");
+        printf("\033[31m0. Exit\033[0m\n\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        if (choice == 0) {
+            system("clear");
+             printf("\033[31mExiting Length\033[0m");
+            break;
+        }
+
+        switch (choice) {
+            case 1:
+                printf("Enter the length in meters: ");
+                scanf("%lf", &meters);
+                kilometers = meters / 1000;
+                printf("%lf meters = %lf kilometers\n", meters, kilometers);
+                break;
+
+            case 2:
+                printf("Enter the length in kilometers: ");
+                scanf("%lf", &kilometers);
+                meters = kilometers * 1000;
+                printf("%lf kilometers = %lf meters\n", kilometers, meters);
+                break;
+
+            case 3:
+                printf("Enter the length in meters: ");
+                scanf("%lf", &meters);
+                miles = meters / 1609.34;
+                printf("%lf meters = %lf miles\n", meters, miles);
+                break;
+
+            case 4:
+                printf("Enter the length in miles: ");
+                scanf("%lf", &miles);
+                meters = miles * 1609.34;
+                printf("%lf miles = %lf meters\n", miles, meters);
+                break;
+
+            case 5:
+                printf("Enter the length in feet: ");
+                scanf("%lf", &feet);
+                inches = feet * 12;
+                printf("%lf feet = %lf inches\n", feet, inches);
+                break;
+
+            case 6:
+                printf("Enter the length in inches: ");
+                scanf("%lf", &inches);
+                feet = inches / 12;
+                printf("%lf inches = %lf feet\n", inches, feet);
+                break;
+
+            case 7:
+                printf("Enter the length in centimeters: ");
+                scanf("%lf", &centimeters);
+                meters = centimeters / 100;
+                printf("%lf centimeters = %lf meters\n", centimeters, meters);
+                break;
+
+            case 8:
+                printf("Enter the length in meters: ");
+                scanf("%lf", &meters);
+                centimeters = meters * 100;
+                printf("%lf meters = %lf centimeters\n", meters, centimeters);
+                break;
+
+            default:
+                printf("Invalid choice. Please try again.\n");
+                break;
+        }
+    }
+}
 
 
